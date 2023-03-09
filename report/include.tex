@@ -1,0 +1,75 @@
+\documentclass[a4paper, oneside, 11pt]{article}
+\pagestyle{plain}
+
+% \setlength{\parindent}{6pt}
+% \usepackage[skip=12pt]{parskip}
+
+\usepackage[english]{babel}
+\usepackage[margin=1.1in]{geometry}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{15pt}{10pt}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{xcolor}
+\usepackage{pagecolor}
+\usepackage{lipsum}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{amsthm}
+\usepackage{listings}
+\usepackage{tabularx}
+\usepackage{lipsum}
+\usepackage{multicol}
+\usepackage{indentfirst}
+\usepackage{authblk}
+
+% \definecolor{myblack}{RGB}{45, 42, 46}
+% \definecolor{mywhite}{RGB}{252, 252, 250}
+
+% \pagecolor{myblack}
+% \color{mywhite}
+
+\titleformat{\chapter}[display]
+	{\normalfont\bfseries}{}{0pt}{\Huge}
+
+\author{
+	\small{David Cachia Enriquez} \\
+	\small{\texttt{david.cachia.enriquez.21@um.edu.mt}}
+	\and
+	\small{Jan Formosa} \\
+	\small{\texttt{jan.lawrence.formosa.21@um.edu.mt}}
+	\and
+	\small{Matthew Kenely} \\
+	\small{\texttt{matthew.kenely.21@um.edu.mt}}
+}
+
+\date{}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.98,0.98,0.98}
+
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{white},
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbersep=5pt,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2
+}
+
+\lstset{style=mystyle}
+

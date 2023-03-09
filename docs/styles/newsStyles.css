@@ -1,0 +1,294 @@
+.museumimage {
+    width: 100%;
+    height: 100%;
+    max-height: 20em;
+    object-fit: contain;
+
+    border-radius: 1em;
+}
+
+strong {
+    font-size: 18px;
+    font-family: Ubuntu;
+    letter-spacing: 1px;
+    color: var(--white);
+}
+
+main {
+    text-align: center;
+}
+
+#museumgrid {
+    margin-top: 2em;
+    width: 100%;
+}
+
+.grid-container {
+    display: grid;
+
+    margin: 1em;
+    grid-template-columns: 50% 50%;
+    padding: 10px;
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    padding: 2em;
+    margin: 1em;
+
+    min-height: 18em;
+    max-height: 24em;
+
+    text-align: left;
+    font-size: 14px;
+    color: var(--dim);
+
+    cursor: pointer;
+    border-radius: 1em;
+
+    transition: .4s;
+
+    border: 1px solid var(--border);
+}
+
+.grid-item:hover {
+    background: var(--lightgray);
+}
+
+.grid-item-description {
+    padding-top: 1em;
+
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 3px;
+    color: #dedede;
+}
+
+.star-count {
+    padding-top: 1em;
+
+    display: flex;
+    align-items: center;
+}
+
+.repoimage {
+    width: 3em;
+    border-radius: 100%;
+    float: left;
+    margin-right: 1em;
+}
+
+model-viewer {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#fullscreenviewer {
+    display: none;
+
+    z-index: 4;
+
+    height: 100%;
+    width: 100%;
+
+    background: var(--gray);
+
+    position: fixed;
+    overflow: hidden;
+
+    animation: fadeInAnimation ease 0.8s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+#closebutton {
+    z-index: 5;
+    position: fixed;
+    margin-top: 10vh;
+    top: 0;
+    left: 0;
+
+    opacity: 0.6;
+
+    cursor: pointer;
+
+    transition: 0.4s;
+}
+
+#closebutton:hover {
+    opacity: 0.4;
+}
+
+#closebutton img {
+    width: 2em;
+    padding: 1em;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOutAnimation {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+#objviewer {
+    position: fixed;
+    margin-top: 10vh;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+#objdescription {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+    height: 90vh;
+    width: 20%;
+    top: 0;
+    right: 0;
+
+    background: rgba(44, 44, 44, 0.4);
+
+    overflow-y: visible;
+
+    text-align: justify;
+
+    cursor: default;
+
+    font-size: 95%;
+    font-family: Ubuntu;
+}
+
+#objdescription p {
+    padding-left: 1.5em;
+    padding-right: 1.5em;
+}
+
+#textcontent {
+    height: 95%;
+    overflow-y: auto;
+}
+
+#links {
+    text-align: center;
+}
+
+#lazy-load-poster {
+    position: relative;
+    width: 80%;
+    height: 90%;
+    left: 0;
+    top: 0;
+    background-image: url("../images/Loading_icon.gif");
+    background-size: 3em;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#model {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+    .grid-container {
+        display: grid;
+        width: 100%;
+        grid-template-columns: auto;
+        padding: 0;
+    }
+
+    .grid-item {
+        font-size: 16px;
+    }
+
+    .grid-item-description {
+        font-size: 18px;
+        width: 100%;
+    }
+
+    #fullscreenviewer {
+        display: none;
+        z-index: 4;
+
+        height: 100vh;
+        width: 100vw;
+
+        background: var(--gray);
+
+        position: fixed;
+
+    }
+
+    #objviewer {
+        position: relative;
+        margin-top: 0vh;
+        height: 50%;
+        width: 100%;
+
+        top: initial;
+        left: initial;
+    }
+
+    #objdescription {
+        position: relative;
+        margin-top: 0vh;
+        height: calc(50% - 10vh);
+        width: 100%;
+
+        text-align: justify;
+
+        top: initial;
+        right: initial;
+    }
+
+    #objdescription p {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+
+    #textcontent {
+        z-index: 5;
+        height: 95%;
+        overflow-y: auto;
+    }
+
+    #back {
+        margin-top: 3em;
+        padding: 0em;
+
+        text-transform: uppercase;
+        font-size: 120%;
+        font-weight: 700;
+        letter-spacing: 1px;
+
+        animation: levitate 1s infinite alternate;
+    }
+
+    #lazy-load-poster {
+        width: 100%;
+    }
+}

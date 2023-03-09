@@ -1,0 +1,55 @@
+\input{./include.tex}
+
+\titleformat{\chapter}[display]
+  {\normalfont\bfseries}{}{0pt}{\Huge}
+
+\usepackage{enumitem}
+\newlist{worddefs}{description}{1}
+\setlist[worddefs]{font=\sffamily\bfseries, labelindent=\parindent, leftmargin=6em, style=sameline}
+
+\title{\textbf{ICS2000 Group Assigned Practical Task} \\ Online Museum}
+
+\begin{document}
+\maketitle
+
+\setlength{\columnsep}{1cm}
+
+\begin{multicols*}{2}
+
+\begin{abstract}
+  \textit{
+    \lipsum[1]
+  }
+\end{abstract}
+
+\section{Introduction}
+Citation test~\cite{klabnik2023rust}.
+\lipsum[1]
+
+\section{Background}
+\lipsum[1]
+
+\section{Methodology}
+\lipsum[1]
+
+\section{Results}
+\lipsum[1]
+
+\section{Discussion}
+\lipsum[1]
+
+\section{Conclusion}
+\lipsum[1]
+
+
+\newpage
+
+
+\Urlmuskip=0mu plus 1mu\relax
+\bibliographystyle{IEEEtran}
+\bibliography{refs}
+
+\end{multicols*}
+
+
+\end{document}
