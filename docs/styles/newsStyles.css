@@ -213,6 +213,44 @@ model-viewer {
     object-fit: cover;
 }
 
+#articleinput {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3em;
+}
+
+#articleinput input {
+    width: 40%;
+    height: 3em;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin-top: 3em;
+    font-family: Ubuntu Mono;
+    font-size: 1em;
+    /* color: var(--dim); */
+    border: 1px solid var(--border);
+    border-radius: 2em;
+
+    transition: 0.4s;
+}
+
+#articleinput input:hover,
+#articleinput input:focus {
+    border: 1px solid #adabab;
+
+    transition: 0.4s;
+}
+
+#articleinput input:focus {
+    outline: none;
+}
+
+::placeholder {
+    color: var(--border);
+}
+
 @media screen and (max-aspect-ratio: 1/1) {
     .grid-container {
         display: grid;

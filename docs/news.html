@@ -26,6 +26,10 @@
     </div>
 
     <main>
+        <form action="javascript:getLocation()" id="articleinput" ondrop="console.log('drop')">
+            <input id="locationinput" type="text" placeholder="https://www.example/com">
+        </form>
+        
         <div id="museumgrid" class="grid-container">
             <div class="grid-item" onclick="showObject('1')">
                 <img src="images/objects/1.jpg" alt="Object 1">
