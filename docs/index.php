@@ -13,6 +13,9 @@
     <link rel="stylesheet" href="styles/headerStyles.css">
     <link rel="stylesheet" href="styles/indexStyles.css">
 
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+
     <title>Location Chronicles</title>
 </head>
 
@@ -26,7 +29,7 @@
 
     <main>
         <div id="intro">
-            <img id="logo" src="images/logo.png" alt="Location Chronicles Logo">
+            <!-- <img id="logo" src="images/logo.png" alt="Location Chronicles Logo"> -->
             <h1>Location Chronicles</h1>
             <p>A project carried out by Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the
                 University of Malta.</p>
@@ -41,6 +44,8 @@
         </div>
 
         <div id="result"></div>
+
+        <div id="map" style="border: 1px solid #d7d5d5;"></div>
 
         <!-- <div id="universities">
             <a href="https://www.um.edu.mt/ict/ai" target="_blank"><img id="umlogo" src="images/umlogo.png"
@@ -70,13 +75,18 @@
                     text: file
                 },
                 success: function(data) {
-                    console.log(data)
-                    result.innerHTML = data;
+                    data = data.replace(/[\u{0080}-\u{FFFF}]/gu, "");
+                    data = data.replace(/[^a-zA-Z0-9 ]/g, "");
+                    data = data.replace(/\s+/g, ' ');
+                    data = data.trim();
+                    result.innerHTML = "Detected location: <b>" + data + "</b>";
+                    updateMap(data);
                 }
             });
-        }
-        else if (article.match(regex)) {
+        } else if (article.match(regex)) {
             result.innerHTML = "Detecting location...";
+            // loading icon
+            result.innerHTML = "<img src='./loading-gif.gif' alt='loading' width='32px' height='32px'>";
 
             $.ajax({
                 type: "POST",
@@ -85,8 +95,12 @@
                     url: article
                 },
                 success: function(data) {
-                    console.log(data)
-                    result.innerHTML = data;
+                    data = data.replace(/[\u{0080}-\u{FFFF}]/gu, "");
+                    data = data.replace(/[^a-zA-Z0-9 ]/g, "");
+                    data = data.replace(/\s+/g, ' ');
+                    data = data.trim();
+                    result.innerHTML = "Detected location: <b>" + data + "</b>";
+                    updateMap(data);
                 }
             });
 
@@ -94,12 +108,9 @@
             result.innerHTML = "Please input a valid URL";
         }
 
-
     }
 
     function dropHandler(ev) {
-        console.log("File(s) dropped");
-
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
@@ -128,8 +139,6 @@
     }
 
     function generalDrag(ev) {
-        console.log("File(s) in drop zone");
-
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
@@ -139,8 +148,6 @@
     }
 
     function generalLeave(ev) {
-        console.log("File(s) out of drop zone");
-
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
@@ -153,8 +160,6 @@
     html.addEventListener("dragleave", generalLeave);
 
     function dragOverHandler(ev) {
-        console.log("File(s) in drop zone");
-
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
@@ -163,15 +168,89 @@
     }
 
     function dragLeaveHandler(ev) {
-        console.log("File(s) out of drop zone");
-
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
 
         // Make drop zone glow
         document.getElementById("locationinput").style.backgroundColor = "#ffffff";
     }
-    
+</script>
+
+<script>
+    function updateMap(country) {
+        // Find country coordinates using countries.csv
+        country = country.toString();
+        var countryCoordinates = null;
+
+        var lat = null;
+        var lng = null;
+
+        $.ajax({
+            type: "GET",
+            url: "./countries.json",
+            dataType: "json",
+            success: function(data) {
+                var countries = data;
+                for (var i = 0; i < countries.length; i++) {
+                    if (countries[i]['name'] == country) {
+                        lat = countries[i]['latitude'];
+                        lng = countries[i]['longitude'];
+                        console.log(lat, lng)
+                        break;
+                    }
+                }
+
+                if (lat != null && lng != null) {
+                    map.setView([lat, lng], 10);
+
+                    var marker = L.marker([lat, lng], {
+                        icon: mainIcon
+                    }).addTo(map);
+
+
+                    var marker = L.marker([lat, lng], {
+                        icon: mainIcon
+                    }).addTo(map);
+
+                    marker.bindPopup("<b>Article Location</b><br>" + lat + ", " + lng).openPopup();
+                }
+            }
+        });
+    }
+
+    /* Map API */
+    var map = L.map('map').setView([50.941310889912586, 6.958274487550246], 1);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+
+    var mainIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var smallIcon = new L.Icon({
+        iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-blue.png',
+        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+        iconSize: [25, 41],
+        iconAnchor: [12, 41],
+        popupAnchor: [1, -34],
+        shadowSize: [41, 41]
+    });
+
+    var request = new XMLHttpRequest();
+    var hpath = "http://api.geonames.org/findNearbyWikipediaJSON?formatted=true&lat=50.941310889912586&lng=6.958274487550246&username=matthewkenely&style=full&wikipediaURL=https://en.wikipedia.org/wiki/Cologne&feature=null"
+    var api;
+
+    request.open("GET", hpath, false);
+    request.send();
+
+    var locations = JSON.parse(request.responseText);
 </script>
 
 </html>
