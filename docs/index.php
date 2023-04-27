@@ -88,7 +88,7 @@
         } else if (article.match(regex)) {
             result.innerHTML = "Detecting location...";
             // loading icon
-            result.innerHTML = "<img src='./loading-gif.gif' alt='loading' width='32px' height='32px'>";
+            result.innerHTML = "<img id=\"loading\" src='./loading-gif.gif' alt='loading'>";
 
             $.ajax({
                 type: "POST",
@@ -205,16 +205,17 @@
                 if (lat != null && lng != null) {
                     map.setView([lat, lng], 10);
 
+                    map.eachLayer(function(layer) {
+                        if (layer instanceof L.Marker) {
+                            map.removeLayer(layer);
+                        }
+                    });
+
                     var marker = L.marker([lat, lng], {
                         icon: mainIcon
                     }).addTo(map);
 
-
-                    var marker = L.marker([lat, lng], {
-                        icon: mainIcon
-                    }).addTo(map);
-
-                    marker.bindPopup("<b>Article Location</b><br>" + lat + ", " + lng).openPopup();
+                    // marker.bindPopup("<b>Article Location</b><br>" + country).openPopup();
                 }
             }
         });
