@@ -35,7 +35,7 @@
         <h3>Article Location Detector</h3>
         <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event)" ondragend="dragLeaveHandler(event)">
             <form action="javascript:getLocation()" method="POST" id="articleinput" ondrop="console.log('drop')">
-                <input id="locationinput" type="text" name="url" placeholder="https://www.example/com">
+                <input id="locationinput" type="text" name="url" placeholder="https://www.example.com">
                 <!-- <input type="submit" value="Submit"> -->
             </form>
         </div>
@@ -171,6 +171,7 @@
         // Make drop zone glow
         document.getElementById("locationinput").style.backgroundColor = "#ffffff";
     }
+    
 </script>
 
 </html>

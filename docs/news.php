@@ -27,7 +27,7 @@
 
     <main>
         <form action="javascript:getLocation()" id="articleinput" ondrop="console.log('drop')">
-            <input id="locationinput" type="text" placeholder="https://www.example/com">
+            <input id="locationinput" type="text" placeholder="https://www.example.com">
         </form>
         
         <div id="museumgrid" class="grid-container">
