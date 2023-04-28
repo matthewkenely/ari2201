@@ -4,4 +4,4 @@
 - [Introduction](#introduction)
 
 ## Introduction
-**Online Museum** is a project carried out by  Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the University of Malta.
+**Location Chronicles** is a project carried out by Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the University of Malta.
