@@ -197,6 +197,7 @@ a {
     padding: 2em;
 }
 
+
 @media screen and (max-aspect-ratio: 1/1) {
     html {
         overflow-y: scroll;
