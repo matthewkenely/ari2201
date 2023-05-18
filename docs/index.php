@@ -97,10 +97,8 @@
                     url: article
                 },
                 success: function(data) {
-                    data = data.replace(/[\u{0080}-\u{FFFF}]/gu, "");
-                    data = data.replace(/[^a-zA-Z0-9 ]/g, "");
-                    data = data.replace(/\s+/g, ' ');
-                    data = data.trim();
+                    console.log(data)
+                    console.log('HEREEEEE')
                     result.innerHTML = "Detected location: <b>" + data + "</b>";
                     updateMap(data);
                 }
