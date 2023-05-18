@@ -30,7 +30,7 @@ li strong {
     list-style-type: none;
     margin: 0;
     overflow: hidden;
-    background: var(--navy);
+    background: var(--gray);
 
     margin-bottom: 10vh;
     padding: 0;

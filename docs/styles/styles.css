@@ -48,17 +48,13 @@ body {
 main {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-
-    height: 82vh;
-
-    overflow-y: visible;
-    overflow-x: hidden;
 
     max-width: 1200px;
     margin: auto auto;
-    padding-left: 1em;
-    padding-right: 1em;
+    overflow-y: visible;
+    overflow-x: hidden;
 
     color: var(--white);
 

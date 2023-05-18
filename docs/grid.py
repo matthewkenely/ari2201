@@ -3,6 +3,8 @@ import codecs
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 import unicodedata
 
+import pandas as pd
+
 def convert_maltese_characters(text):
     mapping = {
         'ġ': 'g',
@@ -18,13 +20,11 @@ def convert_maltese_characters(text):
     converted_text = ''.join([mapping.get(char, char) for char in text])
     return converted_text
 
-
 if __name__ == '__main__':
     location = None
 
     if sys.argv[1] == 'location':
         location = str(sys.argv[2]).lower()
-        original = location
         
     with open('./code/locations.txt', 'r', encoding='utf-8') as f:
         locations = f.readlines()
@@ -36,7 +36,34 @@ if __name__ == '__main__':
 
     if location in locations:
         index = locations.index(location)
-        original = original_locations[index]
-        print(original.capitalize())
+        original = original_locations[index].strip()
+        print('{')
+        print('"location": "' + original + '",')
+
+
+        # return articles in location_articles.csv which contain this location in the location column
+        df = pd.read_csv('./code/location_articles_images.csv')
+        articles = []
+
+        for i, row in df.iterrows():
+            if original in eval(row['location']):
+                if pd.isnull(row['image']):
+                    row['image'] = 'https://newsbook.com.mt/wp-content/assets/newsbook_logo_2020_green.svg'
+                articles.append((row['link'], row['title'], row['date'], row['image']))
+
+        # print(articles)
+        print('"articles" : [')
+        for article in articles:
+            print('{')
+            print('"link": "' + article[0] + '",')
+            print('"title": "' + article[1] + '",')
+            print('"date": "' + article[2] + '",')
+            print('"image": "' + article[3] + '"')
+            print('},') if article != articles[-1] else print('}')
+
+        print(']')
+        print('}')
+
     else:
+
         print('Please enter a valid location')

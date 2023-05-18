@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/headerStyles.css">
-    <link rel="stylesheet" href="styles/newsStyles.css">
     <link rel="stylesheet" href="styles/indexStyles.css">
+    <link rel="stylesheet" href="styles/newsStyles.css">
 
     <title>Location Chronicles • News</title>
 </head>
@@ -40,23 +40,9 @@
         <div id="result"></div>
         </div>
 
-        <div id="newsgrid" class="grid-container">
-            <div class="grid-item" onclick="showObject('1')">
-                <img src="images/objects/1.jpg" alt="Object 1">
-                <div class="grid-item-text">
-                    <h3>Object 1</h3>
-                    <p>Object 1 description</p>
-                </div>
-            </div>
-            <div class="grid-item" onclick="showObject('2')">
-                <img src="images/objects/2.jpg" alt="Object 2">
-                <div class="grid-item-text">
-                    <h3>Object 2</h3>
-                    <p>Object 2 description</p>
-                </div>
-            </div>
+        <div id="newsgrid" class="grid-container"></div>
 
-            <!-- <div id="universities">
+        <!-- <div id="universities">
             <a href="https://www.um.edu.mt/ict/ai" target="_blank"><img id="umlogo" src="images/umlogo.png"
                     alt="University of Malta Logo"></a>
         </div> -->
@@ -64,36 +50,63 @@
 </body>
 
 <script>
-    function loadGrid() {
+    function loadGrid(data) {
         let grid = document.getElementById("newsgrid");
         // load articles from csv
 
 
-        // $.getJSON("objects.json", function(data) {
-        //     let objects = data.objects;
-        //     console.log(objects);
+        let articles = data.articles;
+        console.log(articles);
 
-        //     objects.forEach(element => {
-        //         grid.innerHTML += ' \
-        //             <div class="grid-item" onclick="showObject(\'' + element.id + '\')"> \
-        //                 <img class="museumimage" src="' + element.imgpath + '"> \
-        //                     <div class="grid-item-description">' + element.title + '</div> \
-        //             </div> \
-        //             '
-        //     });
-        // });
+        var i = 0
+        let content = "";
+
+        grid.innerHTML = '';
+        articles.forEach(element => {
+            if (i % 2 == 0) {
+                content += '<div class="row">'
+            }
+
+            content += ' \
+                <div class="grid-item"> \
+                <a href="' + element.link + '" target="_blank"> \
+                    <div class="grid-item-image"> \
+                        <img src="' + element.image + '"> \
+                        <div class="grid-item-description"><p>' + element.title + '</p></div> \
+                    </div> \
+                </a> \
+                </div> \
+                '
+
+            if (i % 2 != 0) {
+                content += '</div>'
+            }
+            i++;
+        });
+
+        grid.innerHTML = content;
+        grid.style.opacity = 0;
+        grid.animate([{
+            opacity: 0
+        }, {
+            opacity: 1
+        }], {
+            duration: 400
+        })
+        grid.style.opacity = 1;
     }
 
     function databaseLookup(file = null) {
+        let grid = document.getElementById("newsgrid");
         document.getElementById("locationinput").style.backgroundColor = "#ffffff";
         document.getElementById("locationinput").style.border = "1px solid #d7d5d5";
 
         let location = document.getElementById("locationinput").value;
         // expression of all maltese villages
 
-        result.innerHTML = "Loading articles...";
         // loading icon
         result.innerHTML = "<img id=\"loading\" src='./loading-gif.gif' alt='loading'>";
+        grid.innerHTML = "";
 
         $.ajax({
             type: "POST",
@@ -103,7 +116,16 @@
             },
             success: function(data) {
                 console.log(data);
-                result.innerHTML = "Loading articles in:<b>" + data + "</b>";
+                // parse data as json
+                data = JSON.parse(data);
+                result.innerHTML = "<b>" + data.location + "</b><hr>";
+                result.animate([{
+                    opacity: 0
+                }, {
+                    opacity: 1
+                }], {
+                    duration: 400
+                })
                 loadGrid(data);
             }
         });
