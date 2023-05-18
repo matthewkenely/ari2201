@@ -26,7 +26,8 @@ Luqa
 Marsa
 Marsaskala
 Marsaxlokk
-Mdina Imdina
+Mdina
+Imdina
 Mellieħa
 Mġarr
 Mosta
