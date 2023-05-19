@@ -175,6 +175,7 @@ main {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    padding-bottom: 2em;
 }
 
 #feedbackButtons {
@@ -205,8 +206,12 @@ button {
 }
 
 #correctLocationForm {
-    padding: 2em;
     width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
 }
 
 #correctLocationInput {
