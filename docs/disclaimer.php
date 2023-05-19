@@ -24,7 +24,7 @@
 <body>
     <div id="header">
         <ul id="navbarmenu">
-            <li><a href="./" class="navbaritem" id="selected">Home</a></li>
+            <li><a href="./" class="navbaritem navanimate">Home</a></li>
             <li><a href="news.php" class="navbaritem navanimate">News</a></li>
         </ul>
     </div>
