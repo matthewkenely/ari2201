@@ -11,6 +11,7 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/headerStyles.css">
+    <link rel="stylesheet" href="styles/footerStyles.css">
     <link rel="stylesheet" href="styles/indexStyles.css">
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin="" />
@@ -47,6 +48,23 @@
 
         <div id="result"></div>
 
+        <div id="feedbackSection">
+            <div id='feedbackButtons'>
+                <button onclick='submitFeedback(true)'>
+                    <img id='thumbsUpButton' src='./images/thumbsup.png' alt='Thumbs Up'>
+                </button>
+                <button onclick='showCorrectLocationInput()'>
+                    <img id='thumbsDownButton' src='./images/thumbsdown.png' alt='Thumbs Down'>
+                </button>
+            </div>
+            <form id='correctLocationForm' action="javascript:submitFeedback(false)" style='display: none;'>
+                <input type='text' id='correctLocationInput' placeholder='Enter correct location'>
+                <div id="correctSubmit">
+                    <input type="submit" value="→">
+                </div>
+        </div>
+        </div>
+
         <div id="map" style="border: 1px solid #d7d5d5;"></div>
 
         <!-- <div id="universities">
@@ -55,6 +73,12 @@
         </div> -->
     </main>
 </body>
+
+<footer>
+    <div id="footer">
+        <p><a href="disclaimer.php">Disclaimer</a></p>
+    </div>
+</footer>
 
 <script>
     let result = document.getElementById("result");
@@ -98,9 +122,18 @@
                 },
                 success: function(data) {
                     console.log(data)
-                    console.log('HEREEEEE')
                     result.innerHTML = "Detected location: <b>" + data + "</b>";
                     updateMap(data);
+
+                    data = data.replace(/[\u{0080}-\u{FFFF}]/gu, "");
+                    data = data.replace(/[^a-zA-Z0-9 ]/g, "");
+                    data = data.replace(/\s+/g, ' ');
+                    data = data.trim();
+
+                    if (data != 'Unable to detect location') {
+                        // User feedback on result
+                        document.getElementById('feedbackButtons').style.display = 'flex';
+                    }
                 }
             });
 
@@ -108,6 +141,70 @@
             result.innerHTML = "Please input a valid URL";
         }
 
+    }
+
+    function submitFeedback(isCorrect) {
+        var feedback = isCorrect ? 'Thumbs Up' : 'Thumbs Down';
+        var correctLocation = isCorrect ? null : document.getElementById('correctLocationInput').value;
+        var link = document.getElementById('locationinput').value;
+        var predicted = document.getElementById('result').innerText.split(':')[1].trim();
+
+        // Send the feedback data to the server or perform any necessary actions
+        console.log('Feedback:', feedback);
+        console.log('Correct Location:', correctLocation);
+
+        if (feedback == 'Thumbs Up') {
+            $.ajax({
+                type: "POST",
+                url: "feedback.php",
+                data: {
+                    good: link,
+                    correct: predicted
+                },
+                success: function(data) {
+                    console.log(data)
+                    // Remove feedback buttons
+                    document.getElementById('feedbackButtons').style.display = 'none';
+
+                    setTimeout(function() {
+                        alert('Thank you for your feedback!')
+                    }, 500);
+                }
+            });
+
+        } else if (feedback == 'Thumbs Down') {
+            if (correctLocation != null) {
+                updateMap(correctLocation);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "feedback.php",
+                data: {
+                    bad: link,
+                    correct: correctLocation
+                },
+                success: function(data) {
+                    console.log(data)
+
+                    // Remove feedback buttons
+                    document.getElementById('feedbackButtons').style.display = 'none';
+
+                    // Remove correct location input
+                    document.getElementById('correctLocationForm').style.display = 'none';
+                    
+                    setTimeout(function() {
+                        alert('Thank you for your feedback!')
+                    }, 500);
+                }
+            });
+        }
+
+    }
+
+    function showCorrectLocationInput() {
+        document.getElementById('feedbackButtons').style.display = 'none';
+        document.getElementById('correctLocationForm').style.display = 'flex';
     }
 
     function dropHandler(ev) {
@@ -177,50 +274,86 @@
 </script>
 
 <script>
-    function updateMap(country) {
-        // Find country coordinates using countries.csv
-        country = country.toString();
-        var countryCoordinates = null;
+    function getVillageCoordinates(villageName) {
+        var apiUrl = 'https://nominatim.openstreetmap.org/search?format=json&q=' + encodeURIComponent(villageName + ', Malta');
 
-        var lat = null;
-        var lng = null;
+        // Make a GET request to the Nominatim API
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.length > 0) {
+                    var village = data[0];
+                    var lat = village.lat;
+                    var lon = village.lon;
+                    console.log('Coordinates of ' + villageName + ': Latitude = ' + lat + ', Longitude = ' + lon);
 
-        $.ajax({
-            type: "GET",
-            url: "./countries.json",
-            dataType: "json",
-            success: function(data) {
-                var countries = data;
-                for (var i = 0; i < countries.length; i++) {
-                    if (countries[i]['name'] == country) {
-                        lat = countries[i]['latitude'];
-                        lng = countries[i]['longitude'];
-                        console.log(lat, lng)
-                        break;
+                    if (lat != null && lon != null) {
+                        map.setView([lat, lon], 15);
+
+                        map.eachLayer(function(layer) {
+                            if (layer instanceof L.Marker) {
+                                map.removeLayer(layer);
+                            }
+                        });
+
+                        var marker = L.marker([lat, lon], {
+                            icon: mainIcon
+                        }).addTo(map);
+
+                        // marker.bindPopup("<b>Article Location</b><br>" + country).openPopup();
                     }
+                } else {
+                    console.log('Coordinates not found for ' + villageName);
                 }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
 
-                if (lat != null && lng != null) {
-                    map.setView([lat, lng], 10);
+    function updateMap(country) {
+        getVillageCoordinates(country);
+        // var countryCoordinates = null;
 
-                    map.eachLayer(function(layer) {
-                        if (layer instanceof L.Marker) {
-                            map.removeLayer(layer);
-                        }
-                    });
+        // var lat = null;
+        // var lng = null;
 
-                    var marker = L.marker([lat, lng], {
-                        icon: mainIcon
-                    }).addTo(map);
+        // $.ajax({
+        //     type: "GET",
+        //     url: "./countries.json",
+        //     dataType: "json",
+        //     success: function(data) {
+        //         var countries = data;
+        //         for (var i = 0; i < countries.length; i++) {
+        //             if (countries[i]['name'] == country) {
+        //                 lat = countries[i]['latitude'];
+        //                 lng = countries[i]['longitude'];
+        //                 console.log(lat, lng)
+        //                 break;
+        //             }
+        //         }
 
-                    // marker.bindPopup("<b>Article Location</b><br>" + country).openPopup();
-                }
-            }
-        });
+        //         if (lat != null && lng != null) {
+        //             map.setView([lat, lng], 10);
+
+        //             map.eachLayer(function(layer) {
+        //                 if (layer instanceof L.Marker) {
+        //                     map.removeLayer(layer);
+        //                 }
+        //             });
+
+        //             var marker = L.marker([lat, lng], {
+        //                 icon: mainIcon
+        //             }).addTo(map);
+
+        //             // marker.bindPopup("<b>Article Location</b><br>" + country).openPopup();
+        //         }
+        //     }
+        // });
     }
 
     /* Map API */
-    var map = L.map('map').setView([50.941310889912586, 6.958274487550246], 1);
+    var map = L.map('map').setView([35.9, 14.4368], 11);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

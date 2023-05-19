@@ -47,8 +47,8 @@ if __name__ == '__main__':
 
         for i, row in df.iterrows():
             if original in eval(row['location']):
-                if pd.isnull(row['image']):
-                    row['image'] = 'https://newsbook.com.mt/wp-content/assets/newsbook_logo_2020_green.svg'
+                if pd.isnull(row['image']) or row['image'].startswith('data'):
+                    row['image'] = './images/newsbook.png'
                 articles.append((row['link'], row['title'], row['date'], row['image']))
 
         # print(articles)
@@ -63,7 +63,5 @@ if __name__ == '__main__':
 
         print(']')
         print('}')
-
     else:
-
         print('Please enter a valid location')

@@ -70,8 +70,8 @@ if __name__ == '__main__':
         if output is not None:
             print(output)
         else:
-            print('Unable to detect location.')
+            print('Unable to detect location')
     except Exception as e:
-        # print('Unable to detect location.')
+        # print('Unable to detect location')
         # print(e)
         pass

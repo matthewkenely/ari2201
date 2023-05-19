@@ -12,6 +12,7 @@
 
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" href="styles/headerStyles.css">
+    <link rel="stylesheet" href="styles/footerStyles.css">
     <link rel="stylesheet" href="styles/indexStyles.css">
     <link rel="stylesheet" href="styles/newsStyles.css">
 
@@ -30,10 +31,12 @@
         <h3>Database Lookup</h3>
         <div id="drop_zone">
             <form action="javascript:databaseLookup()" method="POST" id="articleinput" ondrop="console.log('drop')">
-                <input id="locationinput" type="text" name="url" placeholder="Input a Location">
-                <div id="submit">
-                    <input type="submit" value="→">
-                </div>
+                <!-- <input id="locationinput" type="text" name="url" placeholder="Input a Location"> -->
+                <select id="locationinput" type="text" name="url" placeholder="Choose a Location">
+
+                    <div id="submit">
+                        <input type="submit" style="display: none">
+                    </div>
             </form>
         </div>
 
@@ -49,7 +52,101 @@
     </main>
 </body>
 
+<footer>
+    <div id="footer">
+        <p><a href="disclaimer.php">Disclaimer</a></p>
+    </div>
+</footer>
+
 <script>
+    // get list of villages from ./code/locations.txt
+    var villages = [];
+    $.ajax({
+        url: "./code/locations.txt",
+        success: function(data) {
+            villages = data.split("\n");
+
+            console.log(villages)
+
+            var select = document.getElementById("locationinput");
+
+            // add default value which is unselectable
+            var option = document.createElement("option");
+            option.value = "";
+            option.text = "Choose a Location";
+            select.appendChild(option);
+
+
+            // Populate the dropdown list
+            for (var i = 0; i < villages.length; i++) {
+                var option = document.createElement("option");
+                option.value = villages[i];
+                option.text = villages[i];
+                select.appendChild(option);
+            }
+
+            select.addEventListener("change", function() {
+                document.getElementById("articleinput").submit();
+                // remove first element if it is the default value
+                if (select.options[0].value == "") {
+                    select.removeChild(select.options[0]);
+                }
+            });
+        }
+    });
+
+
+
+    // Ask the user for permission to access their location data
+    navigator.geolocation.getCurrentPosition(function(position) {
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+
+        var url = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`;
+
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                var village = data.address.village;
+                if (village) {
+                    var location = village;
+                    result.innerHTML = "<img id=\"loading\" src='./loading-gif.gif' alt='loading'>";
+                    $.ajax({
+                        type: "POST",
+                        url: "load_grid.php",
+                        data: {
+                            location: location
+                        },
+                        success: function(data) {
+                            console.log(data);
+
+                            try {
+                                data = JSON.parse(data);
+                            } catch (e) {
+                                console.log(e);
+                                // result.innerHTML = "<b>Invalid Location</b>";
+                                return;
+                            }
+
+                            result.innerHTML = "<b>" + data.location + "</b><hr>";
+                            result.animate([{
+                                opacity: 0
+                            }, {
+                                opacity: 1
+                            }], {
+                                duration: 400
+                            })
+                            loadGrid(data);
+                        }
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                // alert("An error occurred while fetching the location data.");
+            });
+    });
+
     function loadGrid(data) {
         let grid = document.getElementById("newsgrid");
         // load articles from csv
@@ -72,7 +169,9 @@
                 <a href="' + element.link + '" target="_blank"> \
                     <div class="grid-item-image"> \
                         <img src="' + element.image + '"> \
-                        <div class="grid-item-description"><p>' + element.title + '</p></div> \
+                        <div class="grid-item-description"> \
+                        <p><b>' + element.title + '</b></p> \
+                        <p>' + element.date + '</p></div> \
                     </div> \
                 </a> \
                 </div> \
@@ -116,8 +215,15 @@
             },
             success: function(data) {
                 console.log(data);
-                // parse data as json
-                data = JSON.parse(data);
+
+                try {
+                    data = JSON.parse(data);
+                } catch (e) {
+                    console.log(e);
+                    result.innerHTML = "<b>Invalid Location</b>";
+                    return;
+                }
+
                 result.innerHTML = "<b>" + data.location + "</b><hr>";
                 result.animate([{
                     opacity: 0

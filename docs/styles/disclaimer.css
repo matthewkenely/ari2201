@@ -1,0 +1,8 @@
+main p {
+    font-family: Ubuntu;
+    text-align: justify;
+}
+
+main {
+    justify-content: flex-start;
+}

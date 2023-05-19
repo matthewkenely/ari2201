@@ -27,6 +27,7 @@ Marsa
 Marsaskala
 Marsaxlokk
 Mdina
+Imdina
 Mellieħa
 Mġarr
 Mosta
@@ -44,10 +45,17 @@ Qormi
 Qrendi
 Rabat
 Safi
+San Ġiljan
+San Ġwann
+San Lawrenz
+San Pawl il-Baħar
 Sannat
+Santa Luċija
+Santa Venera
 Siġġiewi
 Sliema
 Swieqi
+Ta' Xbiex
 Tarxien
 Valletta
 Xagħra

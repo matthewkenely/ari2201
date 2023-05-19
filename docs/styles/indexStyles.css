@@ -130,7 +130,7 @@ main {
     background-color: var(--gray);
 }
 
-#submit:hover > #articleinput #locationinput {
+#submit:hover>#articleinput #locationinput {
     border: 1px solid #adabab;
 
     transition: 0.4s;
@@ -154,7 +154,6 @@ main {
     height: 10em;
 
     padding: 0;
-    margin: 0;
 }
 
 #loading {
@@ -167,7 +166,120 @@ main {
 
 #map {
     width: 100%;
+    height: 40vh;
+}
+
+#feedbackSection {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#feedbackButtons {
+    background-color: transparent;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1em;
+}
+
+button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+#thumbsUpButton {
+    width: 2em;
+    margin: 0.5em;
+}
+
+#thumbsDownButton {
+    width: 2em;
+    margin: 0.5em;
+}
+
+#correctLocationForm {
+    padding: 2em;
+    width: 100%;
+}
+
+#correctLocationInput {
+    width: 100%;
+    height: 3em;
+    padding: 0;
+    padding-left: 1em;
+    padding-right: 1em;
+    margin: 0;
+    font-family: Ubuntu Mono;
+    font-size: 1em;
+    /* color: var(--dim); */
+    border: 1px solid var(--border);
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+    border-top-left-radius: 2em;
+    border-bottom-left-radius: 2em;
+
+    transition: 0.4s;
+}
+
+#correctLocationInput:hover,
+#correctLocationInput:focus {
+    border: 1px solid #adabab;
+
+    transition: 0.4s;
+}
+
+#correctLocationInput input {
+    font-family: Ubuntu Mono;
+    font-size: 1em;
+}
+
+#correctLocationInput button {
+    font-family: Ubuntu Mono;
+    font-size: 1em;
+}
+
+
+
+#correctSubmit {
+    z-index: 2;
+    cursor: pointer;
+
+    min-width: 3em;
+    height: 3em;
+    padding: 0;
+    margin: 0;
+    margin-left: calc(-3em - 1px);
+
+}
+
+#correctSubmit input {
+    cursor: pointer;
+
+    width: 100%;
     height: 100%;
+    line-height: 0;
+    padding: 0;
+    margin: 0;
+
+    border-top-right-radius: 2em;
+    border-bottom-right-radius: 2em;
+
+    border: none;
+
+    background-color: var(--gray);
+}
+
+#correctSubmit:hover> #correctLocationInput {
+    border: 1px solid #adabab;
+
+    transition: 0.4s;
 }
 
 @media screen and (max-aspect-ratio: 1/1) {
