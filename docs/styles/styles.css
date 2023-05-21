@@ -89,11 +89,11 @@ main {
 
 main a {
     font-weight: 400;
-    color: #82a7db;
+    color: #6286b8;
 }
 
 main a:hover {
-    color: #6286b8;
+    color: #82a7db;
 }
 
 hr {

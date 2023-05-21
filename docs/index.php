@@ -35,6 +35,8 @@
                 <h1>Location Chronicles</h1>
                 <p>A project carried out by Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the
                     University of Malta.</p>
+
+                <p>The aim of this project is to provide Maltese users with a platform which facilitates the recognition of where news articles took place geographically, as well as the ability to filter a <a href="./news.php">database of news articles</a> based on geographical locations, either tailored to a user's location or to whichever village they select. This entails the creation of a news article database, as well as the training of a machine learning model to recognise locations in news articles.</p>
             </div>
 
             <div id="detectorsection">
@@ -48,26 +50,29 @@
                     </form>
                 </div>
 
-                <div id="result"></div>
+                <div id="resultfeedback">
+                    <div id="result"></div>
 
-                <div id="feedbackSection">
-                    <div id='feedbackButtons'>
-                        <button onclick='submitFeedback(true)'>
-                            <img id='thumbsUpButton' src='./images/thumbsup.png' alt='Thumbs Up'>
-                        </button>
-                        <button onclick='showCorrectLocationInput()'>
-                            <img id='thumbsDownButton' src='./images/thumbsdown.png' alt='Thumbs Down'>
-                        </button>
-                    </div>
-                    <form id='correctLocationForm' action="javascript:submitFeedback(false)" style='display: none;'>
-                        <input type='text' id='correctLocationInput' placeholder='Enter correct location'>
-                        <div id="correctSubmit">
-                            <input type="submit" value="→">
+                    <div id="feedbackSection">
+                        <div id='feedbackButtons'>
+                            <button onclick='submitFeedback(true)'>
+                                <img id='thumbsUpButton' src='./images/thumbsup.png' alt='Thumbs Up'>
+                            </button>
+                            <button onclick='showCorrectLocationInput()'>
+                                <img id='thumbsDownButton' src='./images/thumbsdown.png' alt='Thumbs Down'>
+                            </button>
                         </div>
-                    </form>
+                        <form id='correctLocationForm' action="javascript:submitFeedback(false)" style='display: none;'>
+                            <input type='text' id='correctLocationInput' placeholder='Enter correct location'>
+                            <div id="correctSubmit">
+                                <input type="submit" value="→">
+                            </div>
+                        </form>
+                    </div>
 
-                    <div id="map" style="border: 1px solid #d7d5d5;"></div>
                 </div>
+
+                <div id="map"></div>
             </div>
 
 
@@ -110,7 +115,7 @@
                     data = data.replace(/[^a-zA-Z0-9 ]/g, "");
                     data = data.replace(/\s+/g, ' ');
                     data = data.trim();
-                    result.innerHTML = "Detected location: <b>" + data + "</b>";
+                    result.innerHTML = "<b>" + data + "</b>";
                     updateMap(data);
                 }
             });
@@ -127,7 +132,7 @@
                 },
                 success: function(data) {
                     console.log(data)
-                    result.innerHTML = "Detected location: <b>" + data + "</b>";
+                    result.innerHTML = "<b>" + data + "</b>";
                     updateMap(data);
 
                     data = data.replace(/[\u{0080}-\u{FFFF}]/gu, "");
@@ -152,7 +157,7 @@
         var feedback = isCorrect ? 'Thumbs Up' : 'Thumbs Down';
         var correctLocation = isCorrect ? null : document.getElementById('correctLocationInput').value;
         var link = document.getElementById('locationinput').value;
-        var predicted = document.getElementById('result').innerText.split(':')[1].trim();
+        var predicted = document.getElementById('result').innerText.split(':')[1];
 
         // Send the feedback data to the server or perform any necessary actions
         console.log('Feedback:', feedback);
