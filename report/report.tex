@@ -35,21 +35,52 @@
 
   \section{Introduction}
   % Brief introduction to the problem (emphasis on lack of maltese digitisation)
+  % TODO: change this
+  The influx of data in recent years has contributed to the quality of news platforms significantly, with the provision of personalised news content based on users' locations and preferences becoming more accurate by the day. These platforms often focus on larger geographical regions such as countries or cities. For users in smaller regions such as Malta, however, there is a lack of localised news content that caters to their specific interests and preferences on a per-village basis.
+
+  Malta has a unique landscape with distinct villages, each with its own local events, issues, and news. For the Maltese population, having access to news articles that are specifically relevant to their local villages can greatly enhance their news consumption experience and keep them informed about happenings in their immediate surroundings.
 
   % Aim of this project
+  The aim of this project is to provide Maltese users with a platform which facilitates the recognition of where news articles took place geographically, as well as the ability to filter a database of news articles based on geographical locations, either tailored to a user's location or to whichever village they select. This entails the creation of a news article database, as well as the training of a machine learning model to recognise locations in news articles.
 
   % Explanation of NLP and NER
+  The task of recognising locations in news articles is a Natural Language Processing (NLP) problem, and more specifically, a Named Entity Recognition (NER) problem. NLP is a field of computer science which deals with the interaction between computers and human (natural) languages. NER is a subtask of NLP which deals with the identification of named entities (subjects of interest) in text, such as people, locations and organisations \cite{nadeau2007survey}. In this project, the task of the developed NER algorithm will be to identify the locations (specifically, Maltese villages) in which news articles took place.
 
   % Requirements
+  To successfully create this platform, the following tasks shall be carried out:
+  \begin{enumerate}
+    \item The creation of a \textbf{dataset} of news articles which take place in (and ideally mention) Maltese villages.
+    \item The training of a \textbf{Named Entity Recognition model} on this dataset, with the goal of it being able to recognise where Maltese news articles took place.
+    \item The development of a \textbf{web application} on which the following features will be hosted:
+    \begin{itemize}
+      \item An article location detector which utilises the trained model to identify locations in news articles provided by the user.
+      \item A news article database lookup which allows the user to filter said articles in the created dataset based on where they took place in Malta, either tailored to their location (given their consent) or to whichever village they select.
+    \end{itemize}
+  \end{enumerate}
+
+  % TODO: change this
+  By creating a Maltese village location detector, the proposed platform aims to bridge this gap and provide a tailored news experience to Maltese users. Furthermore, the development of such a platform aligns with the growing trend of hyper-localized news consumption, where users seek information that is highly relevant and specific to their immediate surroundings. By focusing on Maltese villages, the platform can cater to the unique needs and interests of the Maltese population, ensuring that they stay informed about events and developments in their local communities.
+
 
   \section{Background}
-  \lipsum[1]
   % Related work
+  In recent years, the tendency has been for people to consume news on online platforms \cite{bennett2008digital} \cite{ripolles2012beyond}, offering users a vast amount of news articles from various sources. One popular example of such a platform is \href{https://news.google.com/}{Google News}, a news aggregator that collects headlines and snippets from news sources worldwide, allowing users to access a wide range of news articles on different topics. One key feature of Google News relevant to this project is its ability to tailor news articles to users' locations. This feature works well when it comes to filtering news articles on a per-country basis (including Malta), and while the option to filter on a per-village basis is available, it is not refined, with Google News often returning any articles which took place in Malta rather than in a specific village.
+
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{./figures/googlenewsmellieha.png} \\
+    Figure 1: Google News filtering by village (Mellieha) displaying articles which took place in St. Paul's Bay, Żurrieq and Żabbar
+  \end{center}
+  
+
+  BBC News also offers this feature to a limited extent in its \href{https://www.bbc.com/news/world}{World} section, allowing users to filter news articles on a per-continent basis. However, this feature is not available for smaller geographical regions such as, and as such, cannot tailor news to a user based on the country they live in, let alone the specific city/village.
 
   
   \section{Methodology}
+  \textit{All source files for work related to this section can be found in the} \verb|./methodology| \textit{directory}
+
   \subsection{Dataset}
-  \lipsum[1]
+  To create a dataset of Maltese news articles, I created an algorithm (found in \verb|scraper.ipynb|) which scrapes news articles in the \href{https://newsbook.com.mt/}{Newsbook} English local archive (found \href{https://newsbook.com.mt/en/category/news/local/}{here}). I was able to scrape the following content of 5797 articles: URL, title, date, and article text. This dataset can be found in \verb|Newsbook Article NER Dataset - all_articles.csv|. I proceeded to clean this dataset (specifically removing duplicates) in Google Sheets, followed by a filtering process to only include articles which mention the names of Maltese villages (found in \verb|villages.txt|) in their text, as well as the start and end index of these villages within the text (this is required to train the NER model), resulting in a dataset of 2454 articles (found in \verb|Newsbook Article NER Dataset - location_articles.csv|). The code for this filtering process can be found in \verb|location_extractor.ipynb|. A final pass through of the dataset was carried out to get the URL of each articles' corresponding image (if any) and add it to the dataset (this was also done in \verb|location_extractor.ipynb|), resulting in the final dataset of 2454 articles (found in \verb|location_articles_images.csv|).
+
 
   \subsubsection{Data Preprocessing}
   \lipsum[1]
@@ -64,7 +95,7 @@
   \lipsum[1]
 
   \subsection{Web Application}
-  % Overview (mention mobile responsiveness)
+  % Overview (mention mobile responsiveness, OpenStreetMap, etc.)
 
   \subsubsection{Home Page} 
   \lipsum[1]
@@ -76,7 +107,7 @@
 
   
   \section{Results}
-  \lipsum[1]
+  
 
 
   
