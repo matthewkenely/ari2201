@@ -29,48 +29,53 @@
     </div>
 
     <main>
-        <div id="intro">
-            <!-- <img id="logo" src="images/logo.png" alt="Location Chronicles Logo"> -->
-            <h1>Location Chronicles</h1>
-            <p>A project carried out by Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the
-                University of Malta.</p>
-        </div>
-
-        <h3>Article Location Detector</h3>
-        <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event)" ondragend="dragLeaveHandler(event)">
-            <form action="javascript:getLocation()" method="POST" id="articleinput" ondrop="console.log('drop')">
-                <input id="locationinput" type="text" name="url" placeholder="Submit a URL or drop a file">
-                <div id="submit">
-                    <input type="submit" value="→">
-                </div>
-            </form>
-        </div>
-
-        <div id="result"></div>
-
-        <div id="feedbackSection">
-            <div id='feedbackButtons'>
-                <button onclick='submitFeedback(true)'>
-                    <img id='thumbsUpButton' src='./images/thumbsup.png' alt='Thumbs Up'>
-                </button>
-                <button onclick='showCorrectLocationInput()'>
-                    <img id='thumbsDownButton' src='./images/thumbsdown.png' alt='Thumbs Down'>
-                </button>
+        <div id="homegrid">
+            <div id="intro">
+                <!-- <img id="logo" src="images/logo.png" alt="Location Chronicles Logo"> -->
+                <h1>Location Chronicles</h1>
+                <p>A project carried out by Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the
+                    University of Malta.</p>
             </div>
-            <form id='correctLocationForm' action="javascript:submitFeedback(false)" style='display: none;'>
-                <input type='text' id='correctLocationInput' placeholder='Enter correct location'>
-                <div id="correctSubmit">
-                    <input type="submit" value="→">
+
+            <div id="detectorsection">
+                <h3>Article Location Detector</h3>
+                <div id="drop_zone" ondrop="dropHandler(event);" ondragover="dragOverHandler(event);" ondragleave="dragLeaveHandler(event)" ondragend="dragLeaveHandler(event)">
+                    <form action="javascript:getLocation()" method="POST" id="articleinput" ondrop="console.log('drop')">
+                        <input id="locationinput" type="text" name="url" placeholder="Submit a URL or drop a file">
+                        <div id="submit">
+                            <input type="submit" value="→">
+                        </div>
+                    </form>
                 </div>
-        </div>
-        </div>
 
-        <div id="map" style="border: 1px solid #d7d5d5;"></div>
+                <div id="result"></div>
 
-        <!-- <div id="universities">
+                <div id="feedbackSection">
+                    <div id='feedbackButtons'>
+                        <button onclick='submitFeedback(true)'>
+                            <img id='thumbsUpButton' src='./images/thumbsup.png' alt='Thumbs Up'>
+                        </button>
+                        <button onclick='showCorrectLocationInput()'>
+                            <img id='thumbsDownButton' src='./images/thumbsdown.png' alt='Thumbs Down'>
+                        </button>
+                    </div>
+                    <form id='correctLocationForm' action="javascript:submitFeedback(false)" style='display: none;'>
+                        <input type='text' id='correctLocationInput' placeholder='Enter correct location'>
+                        <div id="correctSubmit">
+                            <input type="submit" value="→">
+                        </div>
+                    </form>
+
+                    <div id="map" style="border: 1px solid #d7d5d5;"></div>
+                </div>
+            </div>
+
+
+            <!-- <div id="universities">
             <a href="https://www.um.edu.mt/ict/ai" target="_blank"><img id="umlogo" src="images/umlogo.png"
                     alt="University of Malta Logo"></a>
         </div> -->
+        </div>
     </main>
 </body>
 
@@ -192,7 +197,7 @@
 
                     // Remove correct location input
                     document.getElementById('correctLocationForm').style.display = 'none';
-                    
+
                     setTimeout(function() {
                         alert('Thank you for your feedback!')
                     }, 500);

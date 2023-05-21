@@ -76,42 +76,75 @@
 
   
   \section{Methodology}
-  \textit{All source files for work related to this section can be found in the} \verb|./methodology| \textit{directory}
-
   \subsection{Dataset}
-  To create a dataset of Maltese news articles, I created an algorithm (found in \verb|scraper.ipynb|) which scrapes news articles in the \href{https://newsbook.com.mt/}{Newsbook} English local archive (found \href{https://newsbook.com.mt/en/category/news/local/}{here}). I was able to scrape the following content of 5797 articles: URL, title, date, and article text. This dataset can be found in \verb|Newsbook Article NER Dataset - all_articles.csv|. I proceeded to clean this dataset (specifically removing duplicates) in Google Sheets, followed by a filtering process to only include articles which mention the names of Maltese villages (found in \verb|villages.txt|) in their text, as well as the start and end index of these villages within the text (this is required to train the NER model), resulting in a dataset of 2454 articles (found in \verb|Newsbook Article NER Dataset - location_articles.csv|). The code for this filtering process can be found in \verb|location_extractor.ipynb|. A final pass through of the dataset was carried out to get the URL of each articles' corresponding image (if any) and add it to the dataset (this was also done in \verb|location_extractor.ipynb|), resulting in the final dataset of 2454 articles (found in \verb|location_articles_images.csv|).
+  \textit{All source files for work related to this section can be found in the} \verb|docs/data| \textit{directory}
 
+  \medskip
 
-  \subsubsection{Data Preprocessing}
-  \lipsum[1]
+  To create a dataset of Maltese news articles, I created an algorithm (found in \verb|scraper.ipynb|) which scrapes news articles in the \href{https://newsbook.com.mt/}{Newsbook} English local archive (found \href{https://newsbook.com.mt/en/category/news/local/}{here}). I was able to scrape the following content of 5797 articles: URL, title, date, and article text. This dataset can be found in \verb|all_articles.csv|. I proceeded to clean this dataset (specifically removing duplicates) in Google Sheets, followed by a filtering process to only include articles which mention the names of Maltese villages (found in \verb|villages.txt|) in their text, as well as the start and end index of these villages within the text (this is required to train the NER model), resulting in a dataset of 2454 articles (found in \verb|location_articles.csv|). The code for this filtering process can be found in \verb|location_extractor.ipynb|. A final pass through of the dataset was carried out to get the URL of each articles' corresponding image (if any) and add it to the dataset (this was also done in \verb|location_extractor.ipynb|), resulting in the final dataset of 2454 articles (found in \verb|location_articles_images.csv|).
 
   \subsection{Model}
-  \lipsum[1]
+  \textit{All source files for work related to this section can be found in the} \verb|docs/data| \textit{directory}
 
-  \subsubsection{Training}
-  \lipsum[1]
+  \medskip
 
-  \subsubsection{Deployment}
-  \lipsum[1]
+  The Named Entity Recognition model for this project was trained using the \href{}{spaCy} library in Python. spaCy is an open-source library for NLP written in Python, which provides a wide range of NLP tools and features, including the ability to train custom NER models.
+  
+  I used the blank English model provided by spaCy as a base model (with the intention of creating a model targetted towards the recognition of the names of Maltese villages), and proceeded to train it on the \verb|location_articles_images| dataset, taking the news article text and corresponding village name indices and entity labels (scraped in the Dataset subsection) as inputs. The model was trained for 10 epochs, with a dropout rate of 0.3.
+  
+  \begin{center}
+    \includegraphics[width=0.5\textwidth]{./figures/nerloss.png} \\
+    Figure 2: Loss of the NER model over 10 epochs
+  \end{center}
+
+  The code used to train the model can be found in \verb|train_model.ipynb|. The model was saved in the \verb|model| directory.
+
 
   \subsection{Web Application}
+  \textit{All source files for work related to this section can be found in the} \verb|docs| \textit{directory}
+  
+  \medskip
+
   % Overview (mention mobile responsiveness, OpenStreetMap, etc.)
+  The web application for this project was developed using PHP, CSS, JavaScript and Python. The application must be hosted (this can be done locally using open-source software such as \href{https://www.apachefriends.org/}{XAMPP}).
+
+  The application is mobile responsive, allowing users to access it from whichever device they prefer.
+  
+  The application makes use of the \href{https://www.openstreetmap.org/}{OpenStreetMap} API to display a map of Malta on the home page, as well find the coordinates of the villages identified by the Article Location Detector and subsequently display said villages on the map. The Navigator Geolocation API is used on the the News page to ask the user for permission to access their location, which, if provided, is used to automatically filter the news articles in the database based on the village the user is currently in.
 
   \subsubsection{Home Page} 
-  \lipsum[1]
-
+  The home page contains a form (called the Article Location Detector) which allows the user to input a news article URL, which is then passed to the NER model to attempt to identify the Maltese village in which the article took place.
 
   \subsubsection{News Page}
-  \lipsum[1]
-
+  The news page contains a form (called the Database Lookup) which allows the user to either provide their current location or select a village manually, which is then passed to a python script which filters the \verb|location_articles_images.csv| dataset, and retrieves news articles which took place in that village. Where an article took place is determined by checking which village name occurred most frequently in the article text, and if there is a tie, the village name which occurred first is chosen. The articles are then displayed on a grid of cards, each containing the article title, date, image (if any), and a link to the original article. The cards are sorted by date, with the most recent articles appearing first.
 
   
   \section{Results}
+  \subsection{Dataset}
+  % Mention good coverage of all villages but may be biased towards more active ones such as Valletta
+
+
+  \subsection{Model}
+  % Do some testing
+
+
+  \subsection{Web Application}
+  % Show screenshots of the web app
   
 
 
   
-  \section{Evaluation}
+  \section{Challenges and Limitations}
+  % Mention the lack of a Maltese NER model, and the lack of a Maltese NLP library
+
+  % Newsbook only
+
+  % Village names containing multiple words (e.g. St. Paul's Bay)
+
+  
+
+
+  \section{Conclusion}
   \lipsum[1]
 
 

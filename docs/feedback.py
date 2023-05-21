@@ -27,11 +27,11 @@ if __name__ == '__main__':
     print(correct)
 
     if sys.argv[1] == 'good':
-        df = pd.read_csv('data/good.csv')
+        df = pd.read_csv('feedback/good.csv')
         df.loc[len(df)] = [link, correct]
-        df.to_csv('data/good.csv', index=False)
+        df.to_csv('feedback/good.csv', index=False)
         
     elif sys.argv[1] == 'bad':
-        df = pd.read_csv('data/bad.csv')
+        df = pd.read_csv('feedback/bad.csv')
         df.loc[len(df)] = [link, correct]
-        df.to_csv('data/bad.csv', index=False)
+        df.to_csv('feedback/bad.csv', index=False)

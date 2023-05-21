@@ -26,7 +26,7 @@ if __name__ == '__main__':
     if sys.argv[1] == 'location':
         location = str(sys.argv[2]).lower()
         
-    with open('./code/locations.txt', 'r', encoding='utf-8') as f:
+    with open('./data/locations.txt', 'r', encoding='utf-8') as f:
         locations = f.readlines()
         original_locations = locations
         locations = [convert_maltese_characters(x) for x in locations]
@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
 
         # return articles in location_articles.csv which contain this location in the location column
-        df = pd.read_csv('./code/location_articles_images.csv')
+        df = pd.read_csv('./data/location_articles_images.csv')
         articles = []
 
         for i, row in df.iterrows():

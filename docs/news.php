@@ -59,10 +59,10 @@
 </footer>
 
 <script>
-    // get list of villages from ./code/locations.txt
+    // get list of villages from ./data/locations.txt
     var villages = [];
     $.ajax({
-        url: "./code/locations.txt",
+        url: "./data/locations.txt",
         success: function(data) {
             villages = data.split("\n");
 

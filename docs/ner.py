@@ -9,7 +9,7 @@ import re
 import string
 
 import spacy
-nlp = spacy.load("./code/trained_model")
+nlp = spacy.load("./data/trained_model")
 
 def get_location(content):
     doc = nlp(content)
