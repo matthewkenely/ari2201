@@ -1,5 +1,7 @@
 terrorism
 stab
+stabbing
+stabbed
 kill
 murder
 abduction
@@ -17,7 +19,6 @@ kidnapping
 rape
 homicide
 suicide
-stabbing
 abduction
 disaster
 crash
