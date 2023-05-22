@@ -32,8 +32,6 @@ if __name__ == '__main__':
         with open('./data/filter.txt', 'r') as f:
             filter_ = [i.strip() for i in f.readlines()]
 
-    exceptions = ['pharmacies open today']
-
     punctuation = string.punctuation
 
     punctuation += '‘'
@@ -64,10 +62,6 @@ if __name__ == '__main__':
             if original in eval(row['location']):
                 title = ''.join([i for i in row['title'] if i not in punctuation]).lower()
                 title = title.split()
-
-                for word in exceptions:
-                    if word in title:
-                        cont = False
 
                 for word in filter_:
                     if word in title:
