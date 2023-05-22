@@ -1,14 +1,14 @@
 # Fdb version 4
-["bibtex tex/report"] 1684774578 "tex/report.aux" "tex/report.bbl" "tex/report" 1684774599 0
+["bibtex tex/report"] 1684786125 "tex/report.aux" "tex/report.bbl" "tex/report" 1684786460 0
   "./refs.bib" 1684682374 1261 a82f2f43385d708f383fc112d7bb70e9 ""
   "c:/texlive/2022/texmf-dist/bibtex/bst/ieeetran/IEEEtran.bst" 1671552881 57748 7c8250ecf02814ce6ddc0cdbb63df1dd ""
-  "tex/report.aux" 1684774598 2457 7694b99e6256998b59d1a9f6727cb974 "pdflatex"
+  "tex/report.aux" 1684786459 2457 1183abd6c6603780d952b0905c71c4bd "pdflatex"
   (generated)
   "tex/report.bbl"
   "tex/report.blg"
   (rewritten before read)
-["pdflatex"] 1684774595 "c:/Programming/Assignments/ARI2201 Individual Assigned Practical Task/ari2201/report/report.tex" "tex/report.pdf" "report" 1684774599 2
-  "c:/Programming/Assignments/ARI2201 Individual Assigned Practical Task/ari2201/report/report.tex" 1684774590 19601 3281b62bdcb08d309ee00e670ce5cde1 ""
+["pdflatex"] 1684786456 "c:/Programming/Assignments/ARI2201 Individual Assigned Practical Task/ari2201/report/report.tex" "tex/report.pdf" "report" 1684786460 0
+  "c:/Programming/Assignments/ARI2201 Individual Assigned Practical Task/ari2201/report/report.tex" 1684786455 19492 d7d8b43ecb0d7bb6e659ab308a5bab17 ""
   "c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1671550749 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "c:/texlive/2022/texmf-dist/fonts/map/fontname/texfonts.map" 1671552225 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "c:/texlive/2022/texmf-dist/fonts/tfm/jknappen/ec/tcrm1095.tfm" 1671551690 1536 02c06700a42be0f5a28664c7273f82e7 ""
@@ -36,12 +36,9 @@
   "c:/texlive/2022/texmf-dist/fonts/tfm/public/cm/cmtt10.tfm" 1671550691 768 1321e9409b4137d6fb428ac9dc956269 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb" 1671549204 34811 78b52f49e893bcba91bd7581cdc144c0 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb" 1671549204 32080 340ef9bf63678554ee606688e7b5339d ""
-  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb" 1671549204 36299 5f9df58c2139e7edcf37c8fca4bd384d ""
-  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb" 1671549204 35469 dcf3a5f2fc1862f5952e3ee5eb1d98c4 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb" 1671549204 35752 024fb6c41858982481f6968b5fc26508 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb" 1671549204 32362 bc3f3eec7ab7d65fe700963d4017d32c ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb" 1671549204 32569 5e5ddc8df908dea60932f3c484a54c0d ""
-  "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb" 1671549204 32626 5abc8bb2f28aa647d4c70f8ea38cc0d3 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb" 1671549204 37944 359e864bd06cde3b1cf57bb20757fb06 ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb" 1671549204 31099 342ef5a582aacbd3346f3cf4579679fa ""
   "c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb" 1671550750 145929 5c9aebea9ba6e33fc93158c04a3bdcd8 ""
@@ -142,14 +139,14 @@
   "figures/nerloss.png" 1684685978 18586 816c20b90d641d3b028f0f79056ea4c4 ""
   "figures/newspagechoice.png" 1684767316 765738 60ed57ceb31d6bef56fa0a493e674606 ""
   "figures/newspagelocation.png" 1684767226 30192 58b1c2d5e632850c6d4528ef5f4fe46c ""
-  "figures/villagefreq.png" 1684768528 59760 af36cf454ee16b9f557357229d3e5714 ""
-  "figures/villagefreqtop10.png" 1684768918 14832 de28b935d6edd8d59ee85497789bf672 ""
+  "figures/villagefreq.png" 1684786048 54554 556d9f018fddbcd0b9cab3e7697623d7 ""
+  "figures/villagefreqtop10.png" 1684786023 17703 f5afaf11880af8385caf3628c85dbafb ""
   "include.tex" 1684653730 1509 79a028450a40281856eaec003430a66d ""
-  "report.tex" 1684774590 19601 3281b62bdcb08d309ee00e670ce5cde1 ""
+  "report.tex" 1684786455 19492 d7d8b43ecb0d7bb6e659ab308a5bab17 ""
   "tex/nul:" 0 0 d41d8cd98f00b204e9800998ecf8427e ""
-  "tex/report.aux" 1684774598 2457 7694b99e6256998b59d1a9f6727cb974 "pdflatex"
-  "tex/report.bbl" 1684774579 1503 223cc65e3599f4f1e9baeb3577038a56 "bibtex tex/report"
-  "tex/report.out" 1684774598 1497 36d78f0c766e0ecd90118128b7bd0dca "pdflatex"
+  "tex/report.aux" 1684786459 2457 1183abd6c6603780d952b0905c71c4bd "pdflatex"
+  "tex/report.bbl" 1684786126 1503 223cc65e3599f4f1e9baeb3577038a56 "bibtex tex/report"
+  "tex/report.out" 1684786459 1497 36d78f0c766e0ecd90118128b7bd0dca "pdflatex"
   (generated)
   "tex/report.aux"
   "tex/report.log"

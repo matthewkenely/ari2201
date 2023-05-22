@@ -11,11 +11,20 @@
     --gray: #f5f5f5;
     --lightgray: #e9e8e8;
     --border: #d7d5d5;
-    --bg: #e3e4e7;
+    --bg: #f5f5f5;
 }
 
 ::-webkit-scrollbar {
-    display: none;
+    background: var(--bg);
+    z-index: 4;
+    width: 0.5em;
+    transition: 0.4s;
+}
+
+::-webkit-scrollbar-thumb {
+    width: 2px;
+    background: var(--dim);
+    transition: 0.4s;
 }
 
 @keyframes levitate {
@@ -38,7 +47,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    overflow-y: auto;
+    overflow-y: scroll;
 
     padding-top: 10vh;
 
