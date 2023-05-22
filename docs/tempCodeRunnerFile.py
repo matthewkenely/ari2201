@@ -1,2 +1,1 @@
-
-    print(len(locations))
+r

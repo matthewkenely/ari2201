@@ -6,3 +6,8 @@ main p {
 main {
     justify-content: flex-start;
 }
+
+#disclaimer {
+    padding-left: 3em;
+    padding-right: 3em;
+}

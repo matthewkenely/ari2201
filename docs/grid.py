@@ -2,8 +2,8 @@ import sys
 import codecs
 sys.stdout = codecs.getwriter("utf-8")(sys.stdout.detach())
 import unicodedata
-
 import pandas as pd
+import string
 
 def convert_maltese_characters(text):
     mapping = {
@@ -22,9 +22,21 @@ def convert_maltese_characters(text):
 
 if __name__ == '__main__':
     location = None
+    filter_ = []
 
     if sys.argv[1] == 'location':
         location = str(sys.argv[2]).lower()
+
+        
+    if len(sys.argv) > 3 and sys.argv[3] == 'filter':
+        with open('./data/filter.txt', 'r') as f:
+            filter_ = [i.strip() for i in f.readlines()]
+
+    punctuation = string.punctuation
+
+    punctuation += '‘'
+    punctuation += '’'
+
         
     with open('./data/locations.txt', 'r', encoding='utf-8') as f:
         locations = f.readlines()
@@ -46,10 +58,19 @@ if __name__ == '__main__':
         articles = []
 
         for i, row in df.iterrows():
+            cont = True
             if original in eval(row['location']):
-                if pd.isnull(row['image']) or row['image'].startswith('data'):
-                    row['image'] = './images/newsbook.png'
-                articles.append((row['link'], row['title'], row['date'], row['image']))
+                title = ''.join([i for i in row['title'] if i not in punctuation]).lower()
+                title = title.split()
+
+                for word in filter_:
+                    if word in title:
+                        cont = False
+                
+                if cont:
+                    if pd.isnull(row['image']) or row['image'].startswith('data'):
+                        row['image'] = './images/newsbook.png'
+                    articles.append((row['link'], row['title'], row['date'], row['image']))
 
         # print(articles)
         print('"articles" : [')

@@ -30,11 +30,13 @@
     </div>
 
     <main>
-        <h3>Disclaimer</h3>
-        <p>This application does not store any personally identifiable information. However, it utilises user location data, which has the potential to track user behavior. Robust security measures have been implemented to discard this information after use.</p>
-        <p>The application extracts location information from news articles, which may not always be accurate. Efforts have been made to train an accurate Named Entity Recognition (NER) model. However, please be aware that there might be limitations or errors in the provided information. Users are advised to verify the information from reliable sources.</p>
-        <p>The application may retrieve news articles that contain sensitive information, such as crime or tragedy. We understand the importance of presenting such information in a responsible and sensitive manner. However, please be aware that the application cannot guarantee complete avoidance of sensitive content.</p>
-        <p>By using this application, you acknowledge and accept the above-mentioned conditions regarding privacy, accuracy of information, sensitivity.</p>
+        <div id="disclaimer">
+            <h3>Disclaimer</h3>
+            <p>This application does not store any personally identifiable information. However, it utilises user location data, which has the potential to track user behavior. Robust security measures have been implemented to discard this information after use.</p>
+            <p>The application extracts location information from news articles, which may not always be accurate. Efforts have been made to train an accurate Named Entity Recognition (NER) model. However, please be aware that there might be limitations or errors in the provided information. Users are advised to verify the information from reliable sources.</p>
+            <p>The application may retrieve news articles that contain sensitive information, such as crime or tragedy. An option to filter out articles which may be deemed inappropriate is available. However, please be aware that this filter has been developed subjectively and, as such, the application cannot guarantee complete avoidance of sensitive content.</p>
+            <p>By using this application, you acknowledge and accept the above-mentioned conditions regarding privacy, accuracy of information, sensitivity.</p>
+        </div>
     </main>
 </body>
 

@@ -36,7 +36,7 @@
                 <p>A project carried out by Matthew Kenely as part of his ARI2201 Individual Assigned Practical Task at the
                     University of Malta.</p>
 
-                <p>The aim of this project is to provide Maltese users with a platform which facilitates the recognition of where news articles took place geographically, as well as the ability to filter a <a href="./news.php">database of news articles</a> based on geographical locations, either tailored to a user's location or to whichever village they select. This entails the creation of a news article database, as well as the training of a machine learning model to recognise locations in news articles.</p>
+                <p>The aim of this project is to provide Maltese users with a platform which facilitates the recognition of where news articles took place geographically, as well as the ability to filter a <a href="./news.php">database of news articles</a> based on geographical locations, either tailored to their location or to whichever village they select.</p>
             </div>
 
             <div id="detectorsection">
@@ -82,18 +82,22 @@
         </div> -->
         </div>
     </main>
+
+    <footer>
+        <div id="footer">
+            <p><a href="disclaimer.php">Disclaimer</a></p>
+        </div>
+    </footer>
 </body>
 
-<footer>
-    <div id="footer">
-        <p><a href="disclaimer.php">Disclaimer</a></p>
-    </div>
-</footer>
 
 <script>
     let result = document.getElementById("result");
 
     function getLocation(file = null) {
+        document.getElementById('feedbackButtons').style.display = 'none';
+
+
         document.getElementById("locationinput").style.backgroundColor = "#ffffff";
         document.getElementById("locationinput").style.border = "1px solid #d7d5d5";
 
@@ -154,6 +158,12 @@
     }
 
     function submitFeedback(isCorrect) {
+        // Remove feedback buttons
+        document.getElementById('feedbackButtons').style.display = 'none';
+
+        // Remove correct location input
+        document.getElementById('correctLocationForm').style.display = 'none';
+
         var feedback = isCorrect ? 'Thumbs Up' : 'Thumbs Down';
         var correctLocation = isCorrect ? null : document.getElementById('correctLocationInput').value;
         var link = document.getElementById('locationinput').value;
@@ -185,6 +195,7 @@
         } else if (feedback == 'Thumbs Down') {
             if (correctLocation != null) {
                 updateMap(correctLocation);
+                result.innerHTML = "<b>" + correctLocation + "</b>";
             }
 
             $.ajax({

@@ -11,6 +11,7 @@
     --gray: #f5f5f5;
     --lightgray: #e9e8e8;
     --border: #d7d5d5;
+    --bg: #e3e4e7;
 }
 
 ::-webkit-scrollbar {
@@ -28,16 +29,24 @@
 }
 
 html {
-    background: var(--gray);
+    background: var(--bg);
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     overflow-y: auto;
 
     padding-top: 10vh;
 
     margin: auto;
-    background: var(--gray);
+    background-image: url(/images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
     font-size: 18px;
     font-family: Lato;
@@ -48,15 +57,17 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 
-    max-width: 1200px;
+    width: 1200px;
     margin: auto auto;
     overflow-y: visible;
     overflow-x: hidden;
+    min-height: 90vh;
 
     color: var(--white);
+    background: var(--gray);
 
     letter-spacing: 1px;
 
@@ -197,6 +208,10 @@ a {
 @media screen and (max-aspect-ratio: 1/1) {
     html {
         overflow-y: scroll;
+    }
+
+    body {
+        background: var(--gray);
     }
 
     main {

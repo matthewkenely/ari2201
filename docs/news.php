@@ -43,20 +43,23 @@
         <div id="result"></div>
         </div>
 
-        <div id="newsgrid" class="grid-container"></div>
+        <div id="newsgrid" class="grid-container">
+            <p id="newsbrief">Choose a location from the dropdown list to filter the news article database based on where the articles took place in Malta.</p>
+        </div>
 
         <!-- <div id="universities">
             <a href="https://www.um.edu.mt/ict/ai" target="_blank"><img id="umlogo" src="images/umlogo.png"
                     alt="University of Malta Logo"></a>
         </div> -->
     </main>
+
+    <footer>
+        <div id="footer">
+            <p><a href="disclaimer.php">Disclaimer</a></p>
+        </div>
+    </footer>
 </body>
 
-<footer>
-    <div id="footer">
-        <p><a href="disclaimer.php">Disclaimer</a></p>
-    </div>
-</footer>
 
 <script>
     // get list of villages from ./data/locations.txt
