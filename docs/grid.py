@@ -70,10 +70,12 @@ if __name__ == '__main__':
                 if cont:
                     if 'https://newsbook.com.mt/' in row['link'] :
                         source = 'Newsbook'
-                    elif 'https://www.maltatoday.com.mt//' in row['link']:
+                    elif 'https://www.maltatoday.com.mt/' in row['link']:
                         source = 'MaltaToday'
                     elif 'https://www.independent.com.mt/' in row['link']:
                         source = 'The Malta Independent'
+                    else:
+                        source = 'Unknown'
 
                     if pd.isnull(row['image']) or row['image'].startswith('data'):
                         if 'https://newsbook.com.mt/' in row['link'] :
