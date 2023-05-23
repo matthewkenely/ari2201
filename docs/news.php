@@ -53,6 +53,9 @@
         </div> -->
     </main>
 
+    <!-- back to top button -->
+    <button onclick="goToTop()" id="topbutton"></button>
+
     <footer>
         <div id="footer">
             <p><a href="disclaimer.php">Disclaimer</a></p>
@@ -62,6 +65,56 @@
 
 
 <script>
+    // back to top button
+    var topbutton = document.getElementById("topbutton");
+
+    topbutton.addEventListener("click", function() {
+        // Smooth scroll to the top of the page
+        if ('scrollBehavior' in document.documentElement.style) {
+            // If the browser supports scroll behavior property
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        } else {
+            // Fallback for browsers that do not support scroll behavior
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollStep = scrollTop / 20;
+
+            const scrollInterval = setInterval(function() {
+                if (window.pageYOffset > 0) {
+                    window.scrollBy(0, -scrollStep);
+                } else {
+                    clearInterval(scrollInterval);
+                }
+            }, 15);
+        }
+    });
+
+    window.addEventListener("scroll", function() {
+        // Check if the user has scrolled past the start of the page
+        if (window.scrollY > 0) {
+            // Set the button to be fully visible
+            topbutton.style.display = "block";
+
+        } else {
+            // fade out
+            topbutton.animate([{
+                opacity: 1
+            }, {
+                opacity: 0
+            }], {
+                duration: 400
+            })
+
+            setTimeout(function() {
+                topbutton.style.display = "none";
+            }, 400);
+
+        }
+    });
+
+
     // get list of villages from ./data/locations.txt
     var villages = [];
     $.ajax({

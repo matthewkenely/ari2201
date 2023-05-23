@@ -28,7 +28,7 @@
 
   \begin{abstract}
     \textit{
-      This project provides a brief overview of the concept of tailoring news articles to users' locations, and the lack of such a platform which tailors Maltese users on a per-village basis. A dataset of Maltese news articles exhaustive of the majority of Maltese villages was created, a Named Entity Recognition model capable of identifying where news articles took place, and a web application which utilises this model to identify the locations in which news articles took place, as well as gives users the ability to filter a database of news articles based on geographical locations was developed using PHP, CSS, JS and Python. The results of this project are discussed and future work in this area is proposed.
+      This project provides a brief overview of the concept of tailoring news articles to users' locations, a background of this area and highlights the lack of such a platform which tailors news to Maltese users on a per-village basis. To address this, a dataset of Maltese news articles exhaustive of the majority of Maltese villages was created, a Named Entity Recognition model capable of identifying where news articles took place was trained on this dataset, and a web application was developed using PHP, CSS, JS and Python so as to give users the ability to utilise this model to identify the locations in which news articles took place, as well the ability to filter the dataset of news articles based on their geographical location or whichever location they choose. The results and limitations of this project are discussed and future work in this area is proposed.
     }
   \end{abstract}
 
@@ -38,13 +38,13 @@
 
   The influx of data in recent years has contributed to the quality of news platforms significantly, with the provision of personalised news content based on users' locations and preferences becoming more accurate by the day. These platforms often focus on larger geographical regions such as countries or cities. For users in smaller regions such as Malta, however, there is a lack of localised news content that caters to their specific interests and preferences on a per-village basis.
 
-  Malta has a unique landscape with distinct villages, each with its own local events, issues, and news. For the Maltese population, having access to news articles that are specifically relevant to their local villages can greatly enhance their news consumption experience and keep them informed about happenings in their immediate surroundings.
+  Malta has a unique landscape with distinct villages, each with its own local events, issues, and news. For users residing in Malta, having access to news articles that are specifically relevant to their local villages can greatly enhance their news consumption experience and keep them informed about happenings in their immediate surroundings.
 
   % Aim of this project
-  The aim of this project is to provide Maltese users with a platform which facilitates the recognition of where news articles took place geographically, as well as the ability to filter a database of news articles based on geographical locations, either tailored to a user's location or to whichever village they select. This entails the creation of a news article database, as well as the training of a machine learning model to recognise locations in news articles.
+  The aim of this project is to develop a platform for Maltese users which facilitates the recognition of where news articles took place geographically, as well as the ability to filter a database of news articles based on geographical locations, either tailored to a user's location or to whichever village they select. This entails the creation of a Maltese news article dataset, as well as the training of a machine learning model on this dataset to recognise locations in news articles.
 
   % Explanation of NLP and NER
-  The task of recognising locations in news articles is a Natural Language Processing (NLP) problem, and more specifically, a Named Entity Recognition (NER) problem. NLP is a field of computer science which deals with the interaction between computers and human (natural) languages. NER is a subtask of NLP which deals with the identification of named entities (subjects of interest) in text, such as people, locations and organisations \cite{nadeau2007survey}. In this project, the task of the developed NER algorithm will be to identify the locations (specifically, Maltese villages) in which news articles took place.
+  The task of recognising locations in news articles is a Natural Language Processing (NLP) problem, and more specifically, a Named Entity Recognition (NER) problem. NLP is a field of artificial intelligence (a scientific field that studies the creation of machines capable of performing tasks which normally require human intelligence \cite{poole2010artificial}) that deals with the interaction between computers and human (natural) languages. NER is a subtask of NLP which deals with the identification of named entities (subjects of interest) in text, such as people, locations and organisations \cite{nadeau2007survey}. In this project, the task of the developed NER algorithm will be to identify locations (specifically, Maltese villages) in news articles so as to determine where they took place.
 
   % Requirements
   To successfully create this platform, the following tasks shall be carried out:
@@ -129,9 +129,6 @@
   As can be observed in the above figures, the dataset contains news article which occurred in almost all Maltese villages, with most articles taking place in Valletta. This is to be expected given that Valletta is the capital city of Malta and is a very active village.
 
   The dataset is not undersampled in any way and hence is biased towards more active villages. This is not an issue when it comes to the training of an NER model as the linguistic contexts in which the names of villages occur are the same regardless of the popularity of the village, and hence the model will be able to recognise the names of villages (and generalise the contexts in which they appear) regardless of how often they occur in the dataset. Users will simply be shown less articles for less active villages when using the database filter feature.
-
-
-
 
 
   \subsection{Model}
