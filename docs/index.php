@@ -167,7 +167,7 @@
         var feedback = isCorrect ? 'Thumbs Up' : 'Thumbs Down';
         var correctLocation = isCorrect ? null : document.getElementById('correctLocationInput').value;
         var link = document.getElementById('locationinput').value;
-        var predicted = document.getElementById('result').innerText.split(':')[1];
+        var predicted = document.getElementById('result').innerText;
 
         // Send the feedback data to the server or perform any necessary actions
         console.log('Feedback:', feedback);
