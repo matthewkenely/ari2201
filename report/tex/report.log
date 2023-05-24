@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.20)  24 MAY 2023 14:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (TeX Live 2022) (preloaded format=pdflatex 2022.12.20)  24 MAY 2023 15:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -594,105 +594,105 @@ Overfull \hbox (14.22638pt too wide) in paragraph at lines 67--67
 
 [2 <./figures/googlenewsmellieha.png>]
 
-Package hyperref Warning: Suppressing link with empty target on input line 88.
+Package hyperref Warning: Suppressing link with empty target on input line 93.
 
 [3]
-<./figures/villagefreq.png, id=101, 719.0865pt x 417.7206pt>
+<./figures/villagefreq.png, id=102, 719.0865pt x 417.7206pt>
 File: ./figures/villagefreq.png Graphic file (type png)
 <use ./figures/villagefreq.png>
-Package pdftex.def Info: ./figures/villagefreq.png  used on input line 120.
+Package pdftex.def Info: ./figures/villagefreq.png  used on input line 125.
 (pdftex.def)             Requested size: 219.2565pt x 127.36316pt.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 120--120
- [] 
- []
-
-<./figures/villagefreqtop10.png, id=103, 719.0865pt x 364.9635pt>
-File: ./figures/villagefreqtop10.png Graphic file (type png)
-<use ./figures/villagefreqtop10.png>
-Package pdftex.def Info: ./figures/villagefreqtop10.png  used on input line 125.
-(pdftex.def)             Requested size: 219.2565pt x 111.2775pt.
 
 Overfull \hbox (14.22638pt too wide) in paragraph at lines 125--125
  [] 
  []
 
-<./figures/nerloss.png, id=104, 462.528pt x 346.896pt>
-File: ./figures/nerloss.png Graphic file (type png)
-<use ./figures/nerloss.png>
-Package pdftex.def Info: ./figures/nerloss.png  used on input line 137.
-(pdftex.def)             Requested size: 219.2565pt x 164.44383pt.
+<./figures/villagefreqtop10.png, id=104, 719.0865pt x 364.9635pt>
+File: ./figures/villagefreqtop10.png Graphic file (type png)
+<use ./figures/villagefreqtop10.png>
+Package pdftex.def Info: ./figures/villagefreqtop10.png  used on input line 130.
+(pdftex.def)             Requested size: 219.2565pt x 111.2775pt.
 
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 137--137
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 130--130
  [] 
  []
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 146.
+<./figures/nerloss.png, id=105, 419.166pt x 327.3831pt>
+File: ./figures/nerloss.png Graphic file (type png)
+<use ./figures/nerloss.png>
+Package pdftex.def Info: ./figures/nerloss.png  used on input line 142.
+(pdftex.def)             Requested size: 219.2565pt x 171.24927pt.
+
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 142--142
+ [] 
+ []
+
+LaTeX Font Info:    Trying to load font information for U+msa on input line 151.
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 146.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 151.
  (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [4 <./figures/villagefreq.png> <./figures/villagefreqtop10.png> <./figures/nerloss.png>]
-<./figures/homepage.png, id=127, 1445.4pt x 813.0375pt>
+<./figures/homepage.png, id=126, 1445.4pt x 813.0375pt>
 File: ./figures/homepage.png Graphic file (type png)
 <use ./figures/homepage.png>
-Package pdftex.def Info: ./figures/homepage.png  used on input line 175.
-(pdftex.def)             Requested size: 219.2565pt x 123.32742pt.
-
-Overfull \hbox (14.22638pt too wide) in paragraph at lines 175--175
- [] 
- []
-
-<./figures/newspagelocation.png, id=128, 1445.4pt x 813.0375pt>
-File: ./figures/newspagelocation.png Graphic file (type png)
-<use ./figures/newspagelocation.png>
-Package pdftex.def Info: ./figures/newspagelocation.png  used on input line 180.
+Package pdftex.def Info: ./figures/homepage.png  used on input line 180.
 (pdftex.def)             Requested size: 219.2565pt x 123.32742pt.
 
 Overfull \hbox (14.22638pt too wide) in paragraph at lines 180--180
  [] 
  []
 
-<./figures/locationdetector.png, id=129, 416.30531pt x 540.51938pt>
-File: ./figures/locationdetector.png Graphic file (type png)
-<use ./figures/locationdetector.png>
-Package pdftex.def Info: ./figures/locationdetector.png  used on input line 185.
-(pdftex.def)             Requested size: 219.2565pt x 284.67592pt.
+<./figures/newspagelocation.png, id=127, 1445.4pt x 813.0375pt>
+File: ./figures/newspagelocation.png Graphic file (type png)
+<use ./figures/newspagelocation.png>
+Package pdftex.def Info: ./figures/newspagelocation.png  used on input line 185.
+(pdftex.def)             Requested size: 219.2565pt x 123.32742pt.
 
 Overfull \hbox (14.22638pt too wide) in paragraph at lines 185--185
  [] 
  []
 
-<./figures/newspagechoice.png, id=130, 1445.4pt x 813.0375pt>
-File: ./figures/newspagechoice.png Graphic file (type png)
-<use ./figures/newspagechoice.png>
-Package pdftex.def Info: ./figures/newspagechoice.png  used on input line 190.
-(pdftex.def)             Requested size: 219.2565pt x 123.32742pt.
+<./figures/locationdetector.png, id=128, 416.30531pt x 540.51938pt>
+File: ./figures/locationdetector.png Graphic file (type png)
+<use ./figures/locationdetector.png>
+Package pdftex.def Info: ./figures/locationdetector.png  used on input line 190.
+(pdftex.def)             Requested size: 219.2565pt x 284.67592pt.
 
 Overfull \hbox (14.22638pt too wide) in paragraph at lines 190--190
  [] 
  []
 
-<./figures/mobilehome.png, id=131, 397.485pt x 747.54282pt>
-File: ./figures/mobilehome.png Graphic file (type png)
-<use ./figures/mobilehome.png>
-Package pdftex.def Info: ./figures/mobilehome.png  used on input line 195.
-(pdftex.def)             Requested size: 219.2565pt x 412.35892pt.
+<./figures/newspagechoice.png, id=129, 1445.4pt x 813.0375pt>
+File: ./figures/newspagechoice.png Graphic file (type png)
+<use ./figures/newspagechoice.png>
+Package pdftex.def Info: ./figures/newspagechoice.png  used on input line 195.
+(pdftex.def)             Requested size: 219.2565pt x 123.32742pt.
 
 Overfull \hbox (14.22638pt too wide) in paragraph at lines 195--195
  [] 
  []
 
-[5 <./figures/homepage.png> <./figures/newspagelocation.png> <./figures/locationdetector.png> <./figures/newspagechoice.png>]
-<./figures/mobilenews.png, id=136, 397.485pt x 747.54282pt>
-File: ./figures/mobilenews.png Graphic file (type png)
-<use ./figures/mobilenews.png>
-Package pdftex.def Info: ./figures/mobilenews.png  used on input line 200.
+<./figures/mobilehome.png, id=130, 397.485pt x 747.54282pt>
+File: ./figures/mobilehome.png Graphic file (type png)
+<use ./figures/mobilehome.png>
+Package pdftex.def Info: ./figures/mobilehome.png  used on input line 200.
 (pdftex.def)             Requested size: 219.2565pt x 412.35892pt.
 
 Overfull \hbox (14.22638pt too wide) in paragraph at lines 200--200
+ [] 
+ []
+
+[5 <./figures/homepage.png> <./figures/newspagelocation.png> <./figures/locationdetector.png> <./figures/newspagechoice.png>]
+<./figures/mobilenews.png, id=137, 397.485pt x 747.54282pt>
+File: ./figures/mobilenews.png Graphic file (type png)
+<use ./figures/mobilenews.png>
+Package pdftex.def Info: ./figures/mobilenews.png  used on input line 205.
+(pdftex.def)             Requested size: 219.2565pt x 412.35892pt.
+
+Overfull \hbox (14.22638pt too wide) in paragraph at lines 205--205
  [] 
  []
 
@@ -707,12 +707,12 @@ Here is how much of TeX's memory you used:
  34988 multiletter control sequences out of 15000+600000
  520736 words of font info for 63 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 80i,6n,80p,1225b,756s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 80i,6n,80p,1199b,756s stack positions out of 10000i,1000n,20000p,200000b,200000s
 {c:/texlive/2022/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}<c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb><c:/texlive/2022/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb>
-Output written on tex/report.pdf (8 pages, 2327104 bytes).
+Output written on tex/report.pdf (8 pages, 2329131 bytes).
 PDF statistics:
- 196 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
+ 197 PDF objects out of 1000 (max. 8388607)
+ 156 compressed objects within 2 object streams
  34 named destinations out of 1000 (max. 500000)
  163 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -78,7 +78,12 @@
 
   \medskip
 
-  To create a dataset of Maltese news articles, I created algorithms (found in \verb|scraper.ipynb|) which scrape news articles in the \href{https://newsbook.com.mt/}{Newsbook}, \href{https://www.maltatoday.com.mt/}{MaltaToday} and \href{https://www.independent.com.mt/}{The Malta Independent} English local archives. After cleaning this data (specifically removing duplicates and normalising date formats) in Google Sheets I was able to scrape the following content of 14,177 news articles: URL, title, date, article text. This was followed by a filtering process to only include articles which mention the names of Maltese villages (found in \verb|villages.txt|) in their text, as well as the start and end index of these villages within the text (this is required to train the NER model), resulting in a dataset of 5151 articles The code for this filtering process can be found in \verb|location_extractor.ipynb|. A final pass through of the dataset was carried out to get the URL of each article's corresponding image (if any) and add it to the dataset (this was done in \verb|scraper.ipynb|).
+  To create a dataset of Maltese news articles, I created algorithms (found in \verb|scraper.ipynb|) which scrape news articles in the \href{https://newsbook.com.mt/}{Newsbook}, \href{https://www.maltatoday.com.mt/}{MaltaToday} and \href{https://www.independent.com.mt/}{The Malta Independent} English local archives. After cleaning this data (specifically removing duplicates and normalising date formats) in Google Sheets I was able to scrape the following content of 14,177 news articles: URL, title, date, article text. This was followed by a filtering process to only include articles which mention the names of Maltese villages (found in \verb|villages.txt|) in their text, as well as the start and end index of these villages within the text (this is required to train the NER model), resulting in a dataset of 5151 articles The code for this filtering process can be found in \verb|location_extractor.ipynb|. A final pass through of the dataset was carried out to get the URL of each article's corresponding image (if any) and add it to the dataset (this was done 
+  in \verb|scraper.ipynb|).
+
+  \medskip
+
+  Dataset available \href{https://docs.google.com/spreadsheets/d/173apOv4j19tx1Dxv5G9BTqv-GNFM1slDcwCgPO2WXKY/edit?usp=sharing}{here}.
 
   \subsection{Model}
   \textit{All source files for work related to this section can be found in the} \verb|docs/data| \textit{directory}
@@ -135,7 +140,7 @@
   % Do some testing on the model (e.g. show some examples of articles it got right and wrong)
   \begin{center}
     \includegraphics[width=0.5\textwidth]{./figures/nerloss.png} \\
-    Figure 4: Loss of the NER model over 10 epochs
+    Figure 4: Loss of the NER model over 35 epochs
   \end{center}
 
   The following are series of test news articles which were passed to the NER model, where they took place, and the village which the model identified as the location (if any) in which the article took place.
