@@ -213,25 +213,24 @@
   % Mention the lack of a Maltese NER model, and the lack of a Maltese NLP library
 
   % English articles only
-  The dataset only contains English news articles. This is due to the fact that the NER model was trained on the English spaCy model, and hence is only able to recognise locations in English text. This is a limitation of the model, and can be addressed by training the model on a dataset of Maltese news articles, and using a Maltese NLP library such as
+  The dataset only contains English news articles, and the NER model was trained on the blank English spaCy model, and hence is primarily able to infer locations in English text with limited ability to recognise locations in Maltese text. Maltese village names the model recognises are also in English, and it is unable to recognise their Maltese counterparts (e.g. \verb|Floriana| $\rightarrow$ \verb|Furjana|).
 
   % Village names containing multiple words (e.g. St. Paul's Bay)
-  The model is unable to recognise village names which contain multiple words, such as St. Paul's Bay. This is due to the fact that the model was trained on a dataset of news articles which only contain single-word village names. This is a limitation of the model, and can be addressed by training the model on a dataset of news articles which contain multi-word village names, and labelling the village names in the text as such.
+  Due to the way the news article text was parsed, the model is unable to recognise village names which contain multiple words such as St. Paul's Bay, San Ġwann, etc.
 
   % Articles which took place in multiple villages
-  The model is unable to recognise the names of villages in news articles which took place in multiple villages. This is a limitation of the model, and can be addressed by training the model on a dataset which contains news articles which took place in multiple villages, and labelling the villages in which they took place as such.
-
+  When news articles feature the names of multiple villages, the model's ability to determine where they took place is limited.
 
   \section{Conclusion}
   % Summarise the project and its results
-  In this project, I created a dataset of Maltese news articles, trained a Named Entity Recognition model on this dataset, and developed a web application which utilises this model to identify the locations in which news articles took place, as well as filter a database of news articles based on geographical locations.
+  This project has provided a brief overview of the concept of tailoring news articles to users' locations, a background of this area and highlights the lack of such a platform which tailors news to Maltese users on a per-village basis. The dataset, NER model and web application developed as part of this project have provided a foundation for the creation of such a platform, and the results of this project have shown that the application is able to recognise the locations in which news articles took place with a good degree of accuracy.
 
   % Future work
-  Future work on this project could include the following:
+  Future work on this project could include the following improvements:
   \begin{itemize}
-    \item Training the NER model on a dataset of Maltese news articles, and using a Maltese NLP library such
-    \item Training the NER model on a dataset of news articles which contain multi-word village names, and labelling the village names in the text as such.
-    \item Training the NER model on a dataset which contains news articles which took place in multiple villages, and labelling the villages in which they took place as such.
+    \item Training the NER model on a dataset featuring a mix of English and Maltese news articles.
+    \item Preprocessing news article text so as to replace the names of villages which contain multiple words with a single word (e.g. \verb|St. Paul's Bay| $\rightarrow$ \verb|St\_Pauls\_Bay|).
+    \item Training the NER model on a dataset which contains news articles which took place in multiple villages, and labelling the primary villages in which they took place using separate entity labels.
   \end{itemize}
 
 
